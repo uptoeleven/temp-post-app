@@ -1,0 +1,198 @@
+/* Fixes to top & styles */
+.navbarContainer {
+  position: sticky;
+  top: 0rem;
+  z-index: 1;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+  background-color: var(--secondary);
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  max-height: 4rem;
+}
+
+h1 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  color: #ffffff;
+}
+
+.navList {
+  list-style: none;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-right: 2rem;
+}
+
+.closeNavMenu {
+  display: none;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.navLogoutButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  min-width: 8rem;
+  white-space: nowrap;
+  transition: box-shadow 0.3s ease-in-out;
+  color: #ffffff;
+  background-color: inherit;
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 1rem 1rem;
+  cursor: pointer;
+  border: none;
+  /* Shows on hover effect */
+  border-radius: 1.875rem;
+}
+
+/* Hides for wider screens */
+.navMenu {
+  display: none;
+}
+
+.navLogoutIcon {
+  font-size: 1.5rem;
+  padding-right: 0.3rem;
+  color: #ffffff;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.navLogoutButton:hover {
+  box-shadow: 0 0 0.5rem 0.125rem #ffffff;
+  border-radius: 1.875rem;
+}
+
+.navLogoutButton:active {
+  transform: scale(0.9);
+}
+
+.userEmail {
+  color: #ffffff;
+}
+
+/* Prevent overflow */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1rem;
+  }
+}
+
+/* Hamburger menu toggles dropdown containing
+logout button, restyled as an option  */
+@media (max-width: 560px), (max-height: 640px) {
+  .navbarContainer {
+    position: static;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin: 0 0 0.3rem 0;
+    height: 3rem;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1rem;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  /* Replaced by hamburger menu 
+  until toggled open */
+  nav ul {
+    display: none;
+  }
+
+  /* Toggles dropdown */
+  nav ul.open {
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 0;
+  }
+
+  /* Appears when menu open, 
+  to close it onclick */
+  .closeNavMenu {
+    position: absolute;
+    top: 0.1rem;
+    right: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background-color: var(--secondary-light);
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  /* Position, size & layout 
+  hamburger menu symbol */
+  nav .navMenu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.5rem;
+    height: 1.5rem;
+    gap: 0.3rem;
+  }
+
+  /* Creates the 3 hamburger 'bars' */
+  nav .navMenu span {
+    display: block;
+    height: 0.4rem;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 0.2rem;
+  }
+
+  /* Styled like an option in 
+  dropdown instead of button */
+  nav .navLogoutButton {
+    margin: 0;
+    background-color: var(--secondary-light);
+    color: white;
+    /* Hides CreateNew button when open */
+    width: 14rem;
+    height: 5.5rem;
+    border: none;
+    border-radius: 0;
+  }
+
+  nav .navLogoutIcon {
+    color: #ffffff;
+  }
+
+  .userEmail {
+    display: none;
+  }
+}

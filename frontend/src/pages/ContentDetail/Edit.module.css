@@ -1,0 +1,50 @@
+/* Handle display of Creatable & existing tags in Edit */
+.inputTagsContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  border: none;
+  padding: 0.25rem;
+  border-radius: 4px;
+  max-width: 100%;
+}
+
+p {
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.editExistingTags {
+  padding-left: 0.5rem;
+  margin: 0.25rem;
+}
+
+/* Hides div containing existing tags 
+  when all are deleted */
+.hideEmptyTagsDiv {
+  display: none;
+}
+
+/* Uniform width with other
+  primary buttons */
+.saveBtn {
+  padding: 1rem 3.29rem;
+  white-space: nowrap;
+}
+
+/* Centering */
+@media (max-width: 350px) {
+  .editTagsSelect {
+    width: 11rem;
+  }
+}
+
+/* Desktop first app: reduced features */
+@media (max-width: 320px) {
+  .editTagsSection,
+  .editTagsSelect {
+    display: none;
+  }
+}

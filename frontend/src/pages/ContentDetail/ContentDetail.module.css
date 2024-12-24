@@ -1,0 +1,92 @@
+.contentDetailWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 1rem;
+}
+
+.contentDetailTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1.3rem;
+  max-height: 2rem;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contentDetailContent {
+  font-size: 1.25rem;
+  max-width: 100%;
+  white-space: normal;
+  margin: 1.3rem;
+  white-space: pre-wrap;
+}
+
+.contentDetailTagsLabel,
+.contentDetailTitleLabel,
+.contentDetailContentLabel {
+  margin: 1rem 0 1rem 1.3rem;
+}
+
+/* Uniform width for this primary button */
+.goToEditBtn {
+  padding: 1rem 3.29rem;
+  white-space: nowrap;
+}
+
+.tags,
+.tagChip {
+  padding: 0.625rem;
+}
+
+@media (max-width: 1007px) {
+  .contentDetailTitleLabel,
+  .contentDetailTitle,
+  .contentDetailContentLabel,
+  .contentDetailContent,
+  .contentDetailTagsLabel {
+    font-size: 1.25rem;
+  }
+
+  .tags .tagChip {
+    min-width: fit-content;
+    min-height: fit-content;
+    line-height: normal;
+  }
+}
+
+@media (max-width: 400px) {
+  .goToEditBtn {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 320px) {
+  .contentDetailTitle {
+    margin: 0 0 0 1rem;
+  }
+
+  .contentDetailTagsLabel {
+    margin: 0 0 1rem 1rem;
+  }
+
+  .tags,
+  .tagChip {
+    font-size: small;
+  }
+}
+
+@media (max-width: 319px) {
+  .contentDetailTitleLabel,
+  .contentDetailTitle,
+  .contentDetailContentLabel,
+  .contentDetailContent,
+  .contentDetailTagsLabel {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,46 @@
+/* Center page title */
+.main__h2 {
+  text-align: center;
+}
+
+/* Display tags in CreateNew */
+.tagsSectionContainer {
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Uniform width for this primary button */
+.saveBtn {
+  padding: 1rem 3.29rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 430px) {
+  /* Centers ExperimentalAllTagsSelect display */
+  .tagsSectionContainer {
+    justify-content: center;
+  }
+}
+
+/* Desktop first: reduced features */
+@media (max-width: 400px) {
+  .createNewTagLabel {
+    display: none;
+  }
+}
+
+/* Vertical centering on taller screens */
+@media (min-height: 950px) {
+  .createNewFormWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75dvh;
+    height: 75vh;
+  }
+}

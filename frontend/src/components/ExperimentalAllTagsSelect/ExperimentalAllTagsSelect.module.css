@@ -1,0 +1,52 @@
+/* Note! - Desktop first app */
+
+/* Note! - further custom styles defined within component: 
+library specific functions customize appearance based on component state. */
+
+/* Wrapper control width & height */
+.selectContainer {
+  border-radius: 0.625rem;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 750px) {
+  .selectContainer {
+    margin: 0 auto;
+    width: 25rem;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 540px) {
+  .selectContainer {
+    width: 20rem;
+  }
+}
+
+@media (max-width: 470px) {
+  .selectContainer {
+    width: 16rem;
+  }
+
+  .tagSectionLabel {
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .selectContainer {
+    width: 14rem;
+    transform: scale(0.9);
+  }
+}
+
+/* Retain centering */
+@media (max-width: 349px) {
+  .tagSectionLabel {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+}

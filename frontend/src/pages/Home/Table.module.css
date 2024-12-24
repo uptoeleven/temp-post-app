@@ -1,0 +1,626 @@
+/* Please note - closeDateRangeBtn in ModalDateRangeFilter, 
+globalFilter in GlobalFilter */
+
+/* TableOptions section: 
+GlobalFilter, DateRangeFilter, Reset and CreateNew buttons */
+.optionsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.3rem;
+  margin-bottom: 0.625rem;
+}
+
+.seeTableOptionsButton {
+  display: none;
+  color: var(--secondary);
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 1rem;
+  border: none;
+  background-color: inherit;
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+}
+
+/* DateRangeFilter modal toggle button */
+.dateRangeBtn {
+  padding: 1rem;
+}
+
+/* Icons */
+.calendarIcon,
+.resetTableBtnIcon,
+.createNewIconFile {
+  padding-right: 0.3rem;
+  font-size: 1.25rem;
+}
+
+.calendarIcon,
+.resetTableBtnIcon {
+  color: var(--secondary-light);
+}
+
+.resetTableBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.createNewBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.createNewIconFile {
+  padding-right: 0.4rem;
+}
+
+/* Table layout and "paper" effect*/
+.tableContainer {
+  width: 100%;
+  border: solid 1px white;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  box-shadow: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
+    0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
+    0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+    0.3125rem 0.3125rem 0.3125rem 0.3125rem #778da5;
+}
+
+/* Caption for Screen Readers */
+.tableHiddenCaption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+
+/* Eliminate spacing between cells */
+.tableNoGaps {
+  width: 100%;
+  border-spacing: 0;
+}
+
+.tableRow {
+  border-bottom: 1px solid grey;
+}
+
+.tableRow:hover {
+  background-color: #e0e0e0;
+}
+
+.tableCell {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Table Header Section */
+.tableHeader {
+  white-space: nowrap;
+  border-bottom: solid 3px #bd7374;
+  background: white;
+  color: #435362;
+  font-weight: bold;
+  font-size: 1.25rem;
+  font-family: "Lexend Deca", Helvetica, Arial, Lucida, sans-serif;
+  padding: 1rem 0.1rem;
+  text-align: center;
+}
+
+.headerDeleteIcon {
+  margin-top: 0.9rem;
+  margin-right: 2.5rem;
+}
+
+/* Align content of each tag */
+.centerTableTags {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styles tableTagsContainer when child of tableCell */
+.tableCell .tableTagsContainer {
+  flex-wrap: wrap;
+}
+
+/* Styles tagsChipTable when child of tableTagsContainer */
+.tableTagsContainer .tagChipTable {
+  background-color: var(--secondary-chips);
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 0.3rem;
+  padding: 0.625rem;
+  margin: 0rem 0.5rem 0 1rem;
+  width: fit-content;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Table data rows */
+.tableLinkedCellContainer,
+.tableTextCellContainer {
+  max-width: 20rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Handles color in linked cells */
+a {
+  color: black;
+}
+
+/* Table sort buttons date columns*/
+.sortButton {
+  background-color: transparent;
+  border: none;
+}
+
+.sortIcon {
+  color: var(--secondary-light);
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+/* Table Pagination section */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tablePaginationButton,
+.SelectBox {
+  font-size: 1rem;
+  margin: 1rem;
+}
+
+.hiddenPaginationSelectLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.tablePaginationButton {
+  white-space: nowrap;
+}
+
+/* Must preserve to retain gap before .goToPageText */
+.tablePageNumbering {
+  margin-right: 1rem;
+}
+
+/* Matches width to 'Reset' & 'Previous' 
+buttons for uniform UI appearance*/
+.tablePaginationNext {
+  padding: 1rem 2rem;
+}
+
+.goToPageText {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Margin-left provides spacing between 
+goToPageText & pageInput */
+.pageInput {
+  width: 5rem;
+  padding: 1rem;
+  margin-left: 0.5rem;
+  text-align: center;
+}
+
+/* Removes dropdown arrow prevent 
+overflow into rounded border*/
+select {
+  appearance: none;
+}
+
+@media (max-width: 1279px) {
+  * {
+    box-sizing: border-box;
+  }
+
+  .optionsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    align-items: center;
+    overflow: hidden;
+    row-gap: 0.8rem;
+  }
+
+  /* .dateRangeBtn*/
+  .optionsContainer > div:nth-child(1) {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    justify-self: start;
+  }
+
+  .dateRangeBtn {
+    justify-self: end;
+    white-space: nowrap;
+  }
+
+  /*.resetTableBtn */
+  .optionsContainer > div:nth-child(3) {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    justify-self: start;
+  }
+
+  .resetTableBtn {
+    margin: 0;
+    justify-self: start;
+    white-space: nowrap;
+  }
+
+  /*.createNewBtn */
+  .optionsContainer > div:nth-child(4) {
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+    width: fit-content;
+    justify-self: end;
+  }
+
+  /* .optionsContainer .globalFilterInput,
+    .optionsContainer .globalFilter */
+  .optionsContainer > div:nth-child(2) {
+    grid-row: 2;
+    grid-column: 1 / span 3;
+  }
+
+  /* Table - Display: grid prevents horizontal overflow */
+  th {
+    display: none;
+  }
+
+  td {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 0.5rem 1rem;
+  }
+
+  td::before {
+    font-weight: 700;
+    text-transform: capitalize;
+    color: var(--secondary);
+    font-size: 1.3rem;
+  }
+
+  /* Replaces hidden table headers */
+  td:nth-of-type(1)::before {
+    content: "Title";
+  }
+
+  td:nth-of-type(2)::before {
+    content: "Content";
+  }
+
+  td:nth-of-type(3)::before {
+    content: "Tags";
+  }
+
+  td:nth-of-type(4)::before {
+    content: "Created on";
+  }
+
+  td:nth-of-type(5)::before {
+    content: "Updated on";
+  }
+
+  td:nth-of-type(6)::before {
+    content: "Delete item?";
+  }
+
+  /* Separates documents with solid 'line' 
+    under each row's last column*/
+  .tableRow :nth-of-type(6) {
+    border-bottom: 0.5rem solid var(--secondary-light);
+  }
+
+  /* Tidier appearance in grid layout */
+  .tableCell {
+    border: none;
+  }
+
+  /* Prevent 'unused' column whitespace for 
+    medium width screen sizes */
+  .tableLinkedCellContainer {
+    max-width: 100%;
+  }
+
+  /* Styles tableTagsContainer when child of tableCell */
+  .tableCell .tableTagsContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5%;
+  }
+
+  .tableCell .tableTagsContainer .tagChipTable {
+    min-width: 10%;
+    display: block;
+    max-width: fit-content;
+    overflow: hidden;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* Repositions tags to start of row, limits width */
+  .centerTableTags {
+    display: block;
+    text-align: center;
+    white-space: normal;
+    overflow: hidden;
+  }
+
+  /* Pagination: prevents overflow, 
+    poor alignment or btn wrapping  */
+  .pagination,
+  .Table_pagination {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .tablePaginationButton,
+  .SelectBox,
+  .tablePageNumbering {
+    max-width: fit-content;
+    margin: 0;
+    align-self: center;
+  }
+
+  .tablePageNumbering {
+    grid-row: 1;
+    grid-column: 3 / 4;
+    justify-self: center;
+    text-align: center;
+  }
+
+  .tablePaginationReset {
+    grid-row: 1;
+    grid-column: 8 / 9;
+    justify-self: center;
+  }
+
+  .SelectBox {
+    grid-row: 1;
+    grid-column: 4 / span 4;
+    justify-self: center;
+  }
+
+  .tablePaginationGoToFirst {
+    grid-row: 2;
+    grid-column: 2 / 3;
+    justify-self: end;
+    margin-bottom: 0.5rem;
+  }
+
+  .tablePaginationGoToLast {
+    grid-row: 2;
+    grid-column: 9 / 10;
+    justify-self: start;
+    margin-bottom: 0.5rem;
+  }
+
+  .tablePaginationPrevious {
+    grid-row: 2;
+    grid-column: 3 / 4;
+    justify-self: end;
+    margin-bottom: 0.5rem;
+  }
+
+  .tablePaginationNext {
+    grid-row: 2;
+    grid-column: 8/ 9;
+    margin-bottom: 0.5rem;
+    justify-self: start;
+  }
+
+  .goToPageText {
+    grid-row: 2;
+    grid-column: 5 / span 2;
+    justify-self: center;
+    margin-bottom: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .pageInput {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 826px) {
+  /* Prevent horizontal overflow */
+  .pagination,
+  .Table_pagination {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    align-items: center;
+  }
+
+  .tablePaginationButton,
+  .SelectBox {
+    margin-bottom: 0;
+  }
+
+  .tablePageNumbering,
+  .tablePaginationReset {
+    margin-top: 0.5rem;
+  }
+
+  .tablePageNumbering {
+    grid-row: 1;
+    grid-column: 1 / 2;
+    justify-self: end;
+  }
+
+  .tablePaginationReset {
+    grid-column: 2 / 2;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  .SelectBox {
+    font-size: 1rem;
+    grid-row: 2;
+    grid-column: 1 / span 2;
+  }
+
+  .tablePaginationGoToFirst {
+    grid-row: 3;
+    grid-column: 1 / 2;
+  }
+
+  .tablePaginationGoToLast {
+    grid-row: 3;
+    grid-column: 2 / 3;
+  }
+
+  .tablePaginationPrevious,
+  .tablePaginationNext {
+    margin-bottom: 0.5rem;
+  }
+
+  .tablePaginationPrevious {
+    grid-row: 4;
+    grid-column: 1 / 2;
+  }
+
+  .tablePaginationNext {
+    grid-column: 2 / 2;
+    grid-row: 4;
+  }
+
+  .goToPageText {
+    display: none;
+  }
+}
+
+/* Reconfigure OptionsContainer 
+grid layout & hide DateRangeBtn */
+@media (max-width: 780px) {
+  .optionsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .dateRangeBtn {
+    display: none;
+  }
+
+  /*.resetTableBtn */
+  .optionsContainer > div:nth-child(3) {
+    grid-row: 1 / 1;
+    grid-column: 1 / 2;
+  }
+}
+
+@media (max-width: 593px) {
+  .resetTableBtn {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Table Header font smaller prevent 
+     horizontal overlap with table data */
+  td::before {
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 560px), (max-height: 640px) {
+  .optionsContainer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .optionsContainer.visible {
+    max-height: 20rem;
+  }
+
+  .seeTableOptionsButton {
+    display: block;
+  }
+}
+
+@media (max-width: 390px) {
+  /* Options Container: prevent 
+    overflowing and poor alignment */
+  .optionsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .optionsContainer .resetTableBtn {
+    padding: 0.75rem 1rem;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .createNewBtn {
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Prevent overflow */
+  .tablePaginationReset {
+    transform: scaleX(0.9);
+  }
+}
+
+/* Desktop first approach */
+@media (max-width: 300px) {
+  .createNewBtn {
+    display: none;
+  }
+
+  /* Helps centering otherwise too large for cell*/
+  .tablePaginationPrevious {
+    transform: scale(0.8);
+    grid-row: 4;
+    justify-self: center;
+    grid-column: 1 / 2;
+  }
+
+  /* Keeps size uniform with above button same row */
+  .tablePaginationNext {
+    transform: scale(0.8);
+    grid-column: 2 / 2;
+    justify-self: center;
+    grid-row: 4;
+  }
+}
