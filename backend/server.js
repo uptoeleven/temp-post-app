@@ -1,5 +1,5 @@
 // package, loads sensitive env vars from .env file into process.env object
-// require("dotenv").config();
+require("dotenv").config();
 
 let express = require("express");
 const mongoose = require("mongoose");
