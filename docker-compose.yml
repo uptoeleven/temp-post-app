@@ -1,9 +1,5 @@
 version: '3.8'
 
-networks:
-  app-network:
-    driver: bridge
-
 services:
   frontend:
     build:
@@ -12,8 +8,6 @@ services:
       - "3000:3000"
     depends_on:
       - backend
-    networks:
-      - app-network
 
   backend:
     build:
@@ -27,8 +21,6 @@ services:
       - PORT=3001
     depends_on:
       - mongo
-    networks:
-      - app-network
 
   mongo:
     image: mongo
@@ -39,8 +31,6 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=adminpassword
-    networks:
-      - app-network
 
 volumes:
   mongo-data:
