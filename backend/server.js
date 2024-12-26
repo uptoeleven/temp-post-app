@@ -1,5 +1,5 @@
 // package, loads sensitive env vars from .env file into process.env object
-require("dotenv").config();
+// require("dotenv").config();
 
 let express = require("express");
 const mongoose = require("mongoose");
@@ -11,6 +11,12 @@ const port = process.env.PORT;
 // Check if the URI is defined
 if (!mongoURI) {
   console.error("Error: MONGO_URI is not defined in environment variables.");
+  process.exit(1);
+}
+
+// Check if the port is defined
+if (!port) {
+  console.error("Error: PORT is not defined in environment variables.");
   process.exit(1);
 }
 

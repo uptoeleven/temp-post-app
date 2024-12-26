@@ -23,6 +23,8 @@ services:
     environment:
       - NODE_ENV=development
       - MONGODB_CONNSTRING=mongodb://mongo:27017/post-app-db
+      - MONGO_URI=mongodb://mongo:27017/post-app-db
+      - PORT=3001
     depends_on:
       - mongo
     networks:
