@@ -3,6 +3,17 @@ require("dotenv").config();
 
 let express = require("express");
 const mongoose = require("mongoose");
+
+// Get the MongoDB URI from environment variables
+const mongoURI = process.env.MONGO_URI;
+const port = process.env.PORT;
+
+// Check if the URI is defined
+if (!mongoURI) {
+  console.error("Error: MONGO_URI is not defined in environment variables.");
+  process.exit(1);
+}
+
 // provides routes for materials
 const materialRoutes = require("./routes/materials");
 const userRoutes = require("./routes/user");
@@ -25,16 +36,20 @@ app.use((req, res, next) => {
 app.use("/api/materials", materialRoutes);
 app.use("/api/user", userRoutes);
 
-// connect to db
+// Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
-    console.log("connected to database");
+    console.log("Connected to MongoDB!");
     // listen to port
-    app.listen(process.env.PORT, () => {
-      console.log("listening for requests on port", process.env.PORT);
+    app.listen(port, () => {
+      console.log("listening for requests on port", port);
     });
   })
   .catch((error) => {
-    console.log(error);
+    console.error("Error connecting to MongoDB:", error.message);
+    process.exit(1);
   });

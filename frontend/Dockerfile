@@ -1,5 +1,5 @@
-# Use a Windows-compatible Node.js base image
-FROM mcr.microsoft.com/windows/servercore:ltsc2022 AS base
+# Use an official Node.js LTS image for better cross-platform compatibility
+FROM node:18 AS build
 
 # Set working directory
 WORKDIR /app
@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package.json package-lock.json ./
 
-# Install dependencies
-RUN npm install --production
+# Clear NPM cache and install dependencies
+RUN npm cache clean --force && npm install --legacy-peer-deps
 
 # Copy the rest of the application
 COPY . .
@@ -20,4 +20,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Command to run the frontend
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]

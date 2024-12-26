@@ -1,5 +1,9 @@
 version: '3.8'
 
+networks:
+  app-network:
+    driver: bridge
+
 services:
   frontend:
     build:
@@ -8,23 +12,33 @@ services:
       - "3000:3000"
     depends_on:
       - backend
+    networks:
+      - app-network
 
   backend:
     build:
       context: ./backend
     ports:
-      - "5000:4000"
-    env_file:
-      - ./backend/.env 
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - MONGODB_CONNSTRING=mongodb://mongo:27017/post-app-db
     depends_on:
       - mongo
+    networks:
+      - app-network
 
   mongo:
-    image: mongo:latest
+    image: mongo
     ports:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=adminpassword
+    networks:
+      - app-network
 
 volumes:
   mongo-data:
